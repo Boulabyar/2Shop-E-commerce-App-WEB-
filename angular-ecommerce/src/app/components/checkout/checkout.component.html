@@ -1,0 +1,316 @@
+  <!-- Breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="bread-inner-nav">
+						<ul class="bread-list">
+							<li><a routerLink="">Home</a><i class="ti-arrow-right"></i></li>
+							<li class="active"><a routerLink="">Checkout</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Breadcrumbs -->
+<!-- Start Checkout -->
+<form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+
+<section *ngIf="totalQuantity > 0" class="shop checkout section">
+  <div class="form">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-12">
+        <div class="checkout-form">
+          <h2>Make Your Checkout Here</h2>
+          <p>Please register in order to checkout more quickly</p>
+          <!-- Form -->
+
+
+            <div formGroupName="customer">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="form-group">
+                    <label>First Name<span>*</span></label>
+                    <input type="text" name="firstName" placeholder="" formControlName="firstName" required />
+                    <div *ngIf="
+                        firstName.invalid &&
+                        (firstName.dirty || firstName.touched)
+                      " class="alert alert-danger mt-1">
+                      <div *ngIf="
+                          firstName.errors.required ||
+                          firstName.errors.notOnlyWhitespace
+                        ">
+                        First Name is required
+                      </div>
+
+                      <div *ngIf="firstName.errors.minlength">
+                        First Name must be at least 2 characters long
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="form-group">
+                    <label>Last Name<span>*</span></label>
+                    <input type="text" name="lastName" placeholder="" formControlName="lastName" required />
+                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="lastName.errors.required || lastName.errors.notOnlyWhitespace">Last Name is required</div>
+                      <div *ngIf="lastName.errors.minlength">Last Name must be at least 2 characters long</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="form-group">
+                    <label>Email Address<span>*</span></label>
+                    <input type="email" name="email" placeholder="" formControlName="email" required/>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="email.errors.required">Email is required</div>
+                      <div *ngIf="email.errors.pattern">Email must be a valid email address format</div>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                  <div class="form-group">
+                    <label>Phone Number<span>*</span></label>
+                    <input type="text" name="phone" placeholder="" formControlName="phone" required/>
+                    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="phone.errors.required || phone.errors.notOnlyWhitespace">Phone Number is required</div>
+                      <div *ngIf="phone.errors.pattern">Phone Number must be a valid phone Number format</div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container-fluid col-md-12 col-12">
+              <div formGroupName="shippingAddress" class="col-lg-6 col-md-6 col-12 marge">
+                <div class="col-lg-12 col-md-12 col-12 no-marge-start">
+                  <div class="form-group">
+                    <label>Country <span> * </span></label>
+                    <select formControlName="country" class="form-control" name="country_name" id="country" (change)="getStates('shippingAddress')">
+                      <option *ngFor="let country of countries" [ngValue]="country">{{ country.name }}</option>
+                    </select>
+                    <div *ngIf="shippingAddressCountry.invalid && (shippingAddressCountry.dirty || shippingAddressCountry.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="shippingAddressCountry.errors.required">
+                          Country is required
+                      </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-12 no-marge-start">
+                  <div class="form-group">
+                    <label>State / Divition<span>*</span></label>
+                    <select  formControlName="state" class="form-control" name="state-province" id="state-province">
+                      <option *ngFor="let state of shippingAddressStates" [ngValue]="state">{{ state.name }}</option>
+                    </select>
+                    <div *ngIf="shippingAddressState.invalid && (shippingAddressState.dirty || shippingAddressState.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="shippingAddressState.errors.required">State is required</div>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-12 no-marge-start marge-top">
+                  <div class="form-group">
+                    <label>Address <span>*</span></label>
+                    <input type="text" name="address" formControlName="address" required />
+                    <div *ngIf="shippingAddressAddress.invalid && (shippingAddressAddress.dirty || shippingAddressAddress.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="shippingAddressAddress.errors.required">Address is required</div>
+                      <div *ngIf="shippingAddressAddress.errors.minlength">Address must be at least 2 characters long</div>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-12 no-marge-start">
+                  <div class="form-group">
+                    <label>Postal Code<span>*</span></label>
+                    <input type="text" name="post" formControlName="zipCode" required />
+                    <div *ngIf="shippingAddressZipCode.invalid && (shippingAddressZipCode.dirty || shippingAddressZipCode.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="shippingAddressZipCode.errors.required || shippingAddressZipCode.errors.notOnlyWhitespace">
+                          Zip code is required
+                      </div>
+                      <div *ngIf="shippingAddressZipCode.errors.minlength">
+                          Zip code must be at least 4 characters long
+                      </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <div formGroupName="creditCard" class="col-lg-6 col-md-6 col-12 marge">
+                <div class="col-lg-12 col-md-12 col-12 no-marge-end">
+                  <div class="form-group">
+                    <label>Name on Card<span>*</span></label>
+                    <input type="text" name="nameOnCard" formControlName="nameOnCard" required />
+                    <div *ngIf="creditCardNameOnCard.invalid && (creditCardNameOnCard.dirty || creditCardNameOnCard.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="creditCardNameOnCard.errors.required || creditCardNameOnCard.errors.notOnlyWhitespace">
+                          Name is required
+                      </div>
+                      <div *ngIf="creditCardNameOnCard.errors.minlength">Name must be at least 2 characters long</div>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-12 no-marge-end">
+                  <div class="form-group">
+                    <label>Card Number<span>*</span></label>
+                    <input type="text" name="cardNumber" formControlName="cardNumber"/>
+                    <div *ngIf="creditCardNumber.invalid && (creditCardNumber.dirty || creditCardNumber.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="creditCardNumber.errors.required">
+                          Card number is required
+                      </div>
+                      <div *ngIf="creditCardNumber.errors.pattern">
+                          Card number must be 16 digits long
+                      </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-12 no-marge-end">
+                  <div class="form-group">
+                    <label>Security Code<span>*</span></label>
+                    <input type="text" name="securityCode" formControlName="securityCode"/>
+                    <div *ngIf="creditCardSecurityCode.invalid && (creditCardSecurityCode.dirty || creditCardSecurityCode.touched)" class="alert alert-danger mt-1">
+                      <div *ngIf="creditCardSecurityCode.errors.required">
+                          Security code is required
+                      </div>
+                      <div *ngIf="creditCardSecurityCode.errors.pattern">Security code must be 3 digits long</div>
+                  </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+          <!--/ End Form -->
+        </div>
+      </div>
+      <div class="col-lg-4 col-12">
+        <div class="order-details">
+          <!-- Order Widget -->
+          <div class="single-widget">
+            <h2>CART TOTALS</h2>
+            <div class="content">
+              <ul>
+                <li>
+                  Sub Total<span>{{ totalPrice | currency: "TD" }}</span>
+                </li>
+                <li>(+) Shipping<span>DT{{shippingPrice}}</span></li>
+                <li class="last">
+                  Total<span>{{ totalPrice + shippingPrice | currency: "TD" }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--/ End Order Widget -->
+          <!-- Order Widget -->
+          <div formGroupName="creditCard" class="single-widget">
+            <h2>Payments</h2>
+            <div class="content">
+              <div class="form-check">
+                <input formControlName="cardType" name="pay" id="1" type="radio" value="1" /><label
+                  class="form-check-label" for="1"> MasterCard</label>
+              </div>
+              <div class="form-check">
+                <input formControlName="cardType" name="pay" id="2" type="radio" value="2" /><label class="form-check-label" for="2">
+                  VISA</label>
+              </div>
+            </div>
+          </div>
+          <!--/ End Order Widget -->
+          <!-- Payment Method Widget -->
+          <div class="single-widget payement">
+            <div class="content">
+              <img src="assets/images/payment-method.png" alt="#" />
+            </div>
+          </div>
+          <!--/ End Payment Method Widget -->
+          <!-- Button Widget -->
+          <div class="single-widget get-button">
+            <div class="content">
+              <div class="button">
+                <button type="submit" class="btn">proceed to checkout</button>
+              </div>
+            </div>
+          </div>
+          <!--/ End Button Widget -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!--/ End Checkout -->
+
+<!-- if products empty then display a message-->
+<div *ngIf="totalQuantity == 0" class="alert alert-warning alert-warningx col-md-8" role="alert">
+  <i class="fas fa-cart-arrow-down fa-3x"></i> You don't have card yet.</div>
+
+<!-- Start Shop Services Area  -->
+<section class="shop-services section home">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-12">
+        <!-- Start Single Service -->
+        <div class="single-service">
+          <i class="ti-rocket"></i>
+          <h4>Free shiping</h4>
+          <p>Orders over DT100</p>
+        </div>
+        <!-- End Single Service -->
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+        <!-- Start Single Service -->
+        <div class="single-service">
+          <i class="ti-reload"></i>
+          <h4>Free Return</h4>
+          <p>Within 30 days returns</p>
+        </div>
+        <!-- End Single Service -->
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+        <!-- Start Single Service -->
+        <div class="single-service">
+          <i class="ti-lock"></i>
+          <h4>Sucure Payment</h4>
+          <p>100% secure payment</p>
+        </div>
+        <!-- End Single Service -->
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+        <!-- Start Single Service -->
+        <div class="single-service">
+          <i class="ti-tag"></i>
+          <h4>Best Peice</h4>
+          <p>Guaranteed price</p>
+        </div>
+        <!-- End Single Service -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Shop Services -->
+
+<!-- Start Shop Newsletter  -->
+<section class="shop-newsletter section">
+  <div class="container">
+    <div class="inner-top">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 col-12">
+          <!-- Start Newsletter Inner -->
+          <div class="inner">
+            <h4>Newsletter</h4>
+            <p>
+              Subscribe to our newsletter and get <span>10%</span> off your
+              first purchase
+            </p>
+            <div class="newsletter-inner">
+              <input name="EMAIL" placeholder="Your email address" required="" type="email" />
+              <button class="btn">Subscribe</button>
+            </div>
+          </div>
+          <!-- End Newsletter Inner -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Shop Newsletter -->
+</form>

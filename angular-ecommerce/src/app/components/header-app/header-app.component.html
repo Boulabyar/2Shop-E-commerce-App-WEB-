@@ -1,0 +1,156 @@
+
+<header class="header shop">
+  <base href="/">
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-12 col-12">
+          <!-- Top Left -->
+          <div class="top-left">
+            <ul class="list-main">
+              <li><i class="ti-headphone-alt"></i> +0216 22-559-852</li>
+              <li><i class="ti-email"></i> support@Eshop.com</li>
+            </ul>
+          </div>
+          <!--/ End Top Left -->
+        </div>
+        <div class="col-lg-7 col-md-12 col-12">
+          <!-- Top Right -->
+          <div class="right-content">
+            <ul class="list-main">
+              <li><i class="ti-location-pin"></i> Tunisia</li>
+              <li><i class="ti-alarm-clock"></i> <a routerLink="">Daily deal</a></li>
+              <li><i class="ti-user"></i> <a routerLink="">My account</a></li>
+              <li><i class="ti-power-off"></i><a routerLink="">Login</a></li>
+            </ul>
+          </div>
+          <!-- End Top Right -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Topbar -->
+  <div class="middle-inner">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-12">
+          <!-- Logo -->
+          <div class="logo">
+            <a routerLink="" ><img src="assets/images/logo.png" alt="logo"></a>
+          </div>
+          <!--/ End Logo -->
+
+          <!-- Search Form -->
+          <div class="search-top">
+            <div class="top-search"><a><i class="ti-search"></i></a></div>
+            <!-- Search Form -->
+            <div class="search-top">
+              <form class="search-form">
+                <input type="text" placeholder="Search Products Here....." >
+                <button><i class="ti-search"></i></button>
+              </form>
+            </div>
+            <!--/ End Search Form -->
+          </div>
+          <!--/ End Search Form -->
+          <div class="mobile-nav"></div>
+        </div>
+        <div class="col-lg-8 col-md-7 col-12">
+          <div class="search-bar-top">
+            <div class="search-bar">
+              <select>
+                <option selected="selected">All Category</option>
+                <option *ngFor="let c of productCategories" [value]="c">{{c.categoryName}}</option>
+              </select>
+              <form>
+                <input class="search" #myInput placeholder="Search Products Here....." type="search" (keyup.enter)="doSearch(myInput.value)">
+                <button class="btnn" (click)="doSearch(myInput.value)"><i class="ti-search"></i></button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-3 col-12">
+          <div class="right-bar">
+            <!-- Search Form -->
+            <div class="sinlge-bar">
+              <a class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+            </div>
+
+            <div class="sinlge-bar shopping">
+              <a routerLink="" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ totalQuantity }}</span></a>
+              <!-- Shopping Item -->
+              <div class="shopping-item">
+                <div class="dropdown-cart-header">
+                  <span>{{ totalQuantity }}</span>
+                  <a routerLink="cart-details">View Cart</a>
+                </div>
+                <ul *ngFor="let cartItem of cartItems" class="shopping-list">
+                  <li>
+                    <a class="remove" title="Remove this item"><i (click)="remove(cartItem)"  class="fa fa-remove"></i></a>
+                    <a class="cart-img"><img src="{{ cartItem.imageUrl }}" alt="#"></a>
+                    <h4><a routerLink="/products/{{cartItem.id}}">{{ cartItem.name }}</a></h4>
+                    <p class="quantity">{{ cartItem.quantity }}x - <span class="amount">{{ cartItem.unitPrice  | currency: ' DT' }}</span></p>
+                  </li>
+                </ul>
+                <div class="bottom">
+                  <div class="total">
+                    <span>Total</span>
+                    <span class="total-amount">{{ totalPrice | currency: ' DT' }}</span>
+                  </div>
+                  <a routerLink="checkout" class="btn animate">Checkout</a>
+                </div>
+              </div>
+              <!--/ End Shopping Item -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Header Inner -->
+  <div class="header-inner">
+    <div class="container">
+      <div class="cat-nav-head">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="all-category">
+              <h3 class="cat-heading"><i (click)="hide_show()" class="fa fa-bars" aria-hidden="false"></i>CATEGORIES</h3>
+              <ul class="main-category">
+
+
+                 <app-product-category-menu [hidden]="HideOrShow"></app-product-category-menu>
+
+
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-9 col-12">
+            <div class="menu-area">
+              <!-- Main Menu -->
+              <nav class="navbar navbar-expand-lg">
+                <div class="navbar-collapse">
+                  <div class="nav-inner">
+                    <ul class="nav main-menu menu navbar-nav active-ongelet">
+                        <li><a routerLink="" routerLinkActive="active"  >Home</a></li>
+                        <li><a routerLink="about-us" routerLinkActive="active-link">About us</a></li>
+                        <li><a routerLink="contact-us" routerLinkActive="active-link">Contact us</a></li>
+                        <li><a routerLink="">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
+                          <ul class="dropdown">
+                            <li><a routerLink="cart-details">Cart</a></li>
+                            <li><a routerLink="checkout">Checkout</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                  </div>
+                </div>
+              </nav>
+              <!--/ End Main Menu -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/ End Header Inner -->
+</header>

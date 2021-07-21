@@ -1,0 +1,95 @@
+	<!-- Breadcrumbs -->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="bread-inner bread-inner-nav">
+						<ul class="bread-list">
+							<li><a routerLink="">Home</a><i class="ti-arrow-right"></i></li>
+							<li class="active"><a routerLink="#">Products</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Breadcrumbs -->
+<br/>
+<div class="row shop-home-list section">
+    <div class="shop-section-title center_title">
+      <h1>Our products</h1>
+    </div>
+</div>
+<div class="shop-home-list col-md-12 flex-container">
+
+    <div *ngFor="let tempProduct of products" class="single-list">
+      <div class="row">
+        <div class="col-lg-8 col-md-6 col-12 no-padding">
+          <div class="list-image overlay"><img src="{{ tempProduct.imageUrl }}" alt="#"><button class="buy to-buy"
+              (click)="addToCart(tempProduct)"><i class="fa fa-shopping-bag"></i></button></div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-12 no-padding">
+          <div class="content">
+            <h4 class="title"><a routerLink="/products/{{ tempProduct.id }}"
+                routerLink="/products/{{ tempProduct.id }}">{{ tempProduct.name }}</a></h4>
+            <p class="price with-discount">{{ tempProduct.unitPrice | currency:' DT' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+<!-- if products empty then display a message-->
+<div *ngIf="products?.length == 0" class="alert alert-warning alert-warningx col-md-8" role="alert">
+  No products found.
+</div>
+
+<!--</div>-->
+
+<!-- begin footer -->
+<div class="footer-pagination">
+  <div class="row">
+    <div class="col-md-4"></div>
+
+    <div class="col-md-8">
+      <div class="row">
+        <div class="col-md-7" style="padding-left: 30%">
+
+          <!-- <ngb-pagination [(page)]="thePageNumber"
+                                              [pageSize]="thePageSize"
+                                              [collectionSize]="theTotalElements"
+                                              [maxSize]="5"
+                                              [boundaryLinks]="true"
+                                              (pageChange)="listProducts()">
+
+                              </ngb-pagination> -->
+
+        </div>
+
+        <div class="col-md-5 mt-2" style="text-align: right;">
+          <span class="mr-2">Page Size</span>
+
+          <select (change)="updatePageSize($event.target.value)">
+            <option>2</option>
+            <option selected="true">5</option>
+            <option>10</option>
+            <option>20</option>
+            <option>50</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- end footer -->
+<!--
+    </div>
+  </div>
+</div>
+-->

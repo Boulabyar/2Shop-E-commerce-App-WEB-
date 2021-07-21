@@ -1,0 +1,34 @@
+.shop-home-list {
+  width:95% ;
+  margin-left: auto;
+  margin-right: auto;}
+
+
+.flex-container {
+  display: flex;
+  top: -70px;
+  flex-wrap: wrap;
+}
+
+.flex-container > div {
+  width: 350px;
+  margin: 20px;
+  line-height: 75px;
+}
+
+h4 > a{
+  text-decoration: none;
+  color: rgb(15, 15, 15);
+}
+
+.center_title{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.to-buy:focus {
+  outline: none;
+  border-radius: 16px;
+  border: 1px solid rgb(15, 15, 15);
+}
+

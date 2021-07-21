@@ -1,0 +1,239 @@
+
+<section class="hero-slider">
+  <!-- Single Slider -->
+  <div class="single-slider">
+    <div class="container"><img src="assets/images/local.jpg" alt="">
+      <div class="row no-gutters">
+        <div class="col-lg-9 offset-lg-3 col-12">
+          <div class="text-inner">
+            <div class="row">
+              <div class="col-lg-7 col-12">
+                <div class="hero-text">
+                  <h1><span>UP TO 50% OFF </span>Shirt For Man</h1>
+                  <p>Maboriosam in a nesciung eget magnae <br> dapibus disting tloctio in the find it pereri <br> odiy
+                    maboriosm.</p>
+                  <div class="button">
+                    <a routerLink="" class="btn">Shop Now!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/ End Single Slider -->
+</section>
+
+<section class="small-banner section">
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Single Banner  -->
+      <div class="col-lg-3 col-md-6 col-12" *ngFor="let tempProduct of productsJavaScript">
+        <div class="single-banner" >
+          <img src="{{ tempProduct.imageUrl }}" alt="#">
+          <div class="content">
+            <p>Man's Collectons</p>
+            <h3>Summer travel <br> collection</h3>
+            <a routerLink="/products/{{ tempProduct.id }}">Discover Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- /End Single Banner  -->
+    </div>
+  </div>
+</section>
+
+<!-- Start Most Popular -->
+
+        <div class="section-title col-12  container   section">
+          <h2>Hot Item</h2>
+        </div>
+
+<!-- End Most Popular Area -->
+
+
+<section class="section free-version-banner">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-8 offset-md-2 col-xs-12">
+        <div class="section-title mb-60">
+          <span class="text-white wow fadeInDown" data-wow-delay=".2s"
+            style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInDown;">Eshop Free Lite
+            version</span>
+          <h2 class="text-white wow fadeInUp" data-wow-delay=".4s"
+            style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">Currently You are using
+            free<br> lite Version of Eshop.</h2>
+          <p class="text-white wow fadeInUp" data-wow-delay=".6s"
+            style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">Please, purchase full version
+            of the template to get all pages,<br> features and commercial license.</p>
+
+          <div class="button">
+            <a routerLink="" target="_blank" rel="nofollow" class="btn wow fadeInUp" data-wow-delay=".8s">Purchase
+              Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Start Shop Home List  -->
+<section class="shop-home-list section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="row">
+          <div class="col-12">
+            <div class="shop-section-title">
+              <h1>On sale</h1>
+            </div>
+          </div>
+        </div>
+        <!-- Start Single List  -->
+        <div class="single-list">
+          <div class="row" *ngFor="let tempProductpy of productsPython">
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="list-image overlay">
+                <img src="{{ tempProductpy.imageUrl }}" alt="#">
+                <a (click)="addToCart(tempProductpy)" class="buy"><i class="fa fa-shopping-bag"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12 no-padding">
+              <div class="content">
+                <h5 class="title"><a routerLink="/products/{{ tempProductpy.id }}">{{ tempProductpy.name }}</a></h5>
+                <p class="price with-discount">{{ tempProductpy.unitPrice | currency :'DT_'}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Single List  -->
+      </div>
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="row">
+          <div class="col-12">
+            <div class="shop-section-title">
+              <h1>Best Seller</h1>
+            </div>
+          </div>
+        </div>
+
+        <!-- Start Single List  -->
+        <div class="single-list">
+          <div class="row" *ngFor="let tempProductjs of products">
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="list-image overlay">
+                <img src="{{ tempProductjs.imageUrl }}" alt="#">
+                <a (click)="addToCart(tempProductjs)" class="buy"><i class="fa fa-shopping-bag"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12 no-padding">
+              <div class="content">
+                <h5 class="title"><a routerLink="/products/{{ tempProductjs.id }}">{{ tempProductjs.name }}</a></h5>
+                <p class="price with-discount">{{ tempProductjs.unitPrice | currency :'DT_' }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Single List  -->
+      </div>
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="row">
+          <div class="col-12">
+            <div class="shop-section-title">
+              <h1>Top viewed</h1>
+            </div>
+          </div>
+        </div>
+        <!-- Start Single List  -->
+        <div class="single-list">
+          <div class="row" *ngFor="let tempProduct of productsSQL">
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="list-image overlay">
+                <img src="{{ tempProduct.imageUrl }}" alt="#">
+                <a (click)="addToCart(tempProduct)" class="buy"><i class="fa fa-shopping-bag"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12 no-padding">
+              <div class="content">
+                <h5 class="title"><a routerLink="/products/{{ tempProduct.id }}">{{ tempProduct.name }}</a></h5>
+                <p class="price with-discount">{{ tempProduct.unitPrice | currency :'DT_' }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Single List  -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Shop Home List  -->
+
+<!-- Start Shop Services Area -->
+<section class="shop-services section home">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-12">
+        <!-- Start Single Service -->
+        <div class="single-service">
+          <i class="ti-rocket"></i>
+          <h4>Free shiping</h4>
+          <p>Orders over DT100</p>
+        </div>
+        <!-- End Single Service -->
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+        <!-- Start Single Service -->
+        <div class="single-service">
+          <i class="ti-reload"></i>
+          <h4>Free Return</h4>
+          <p>Within 30 days returns</p>
+        </div>
+        <!-- End Single Service -->
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+        <!-- Start Single Service -->
+        <div class="single-service">
+          <i class="ti-lock"></i>
+          <h4>Sucure Payment</h4>
+          <p>100% secure payment</p>
+        </div>
+        <!-- End Single Service -->
+      </div>
+      <div class="col-lg-3 col-md-6 col-12">
+        <!-- Start Single Service -->
+        <div class="single-service">
+          <i class="ti-tag"></i>
+          <h4>Best Peice</h4>
+          <p>Guaranteed price</p>
+        </div>
+        <!-- End Single Service -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Shop Services Area -->
+
+<!-- Start Shop Newsletter  -->
+<section class="shop-newsletter section">
+  <div class="container">
+    <div class="inner-top">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2 col-12">
+          <!-- Start Newsletter Inner -->
+          <div class="inner">
+            <h4>Newsletter</h4>
+            <p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
+            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+              <input name="EMAIL" placeholder="Your email address" required="" type="email">
+              <button class="btn">Subscribe</button>
+            </form>
+          </div>
+          <!-- End Newsletter Inner -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Shop Newsletter -->

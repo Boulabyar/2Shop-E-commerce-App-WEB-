@@ -1,0 +1,27 @@
+.fluid-contents{
+  display: flex;
+}
+
+.button-add-cart {
+  border: 1px solid #333333;
+  background-color: #333333;
+  text-align: center;
+  color: white;
+  border-radius: 16px;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 10px;
+}
+
+.button-add-cart:hover {
+  color: #333333;
+  background-color: white;
+}
+
+.button-add-cart:focus {
+  outline: none;
+  border-radius: 16px;
+  border: 1px solid #f7941d;
+}
+
+
+

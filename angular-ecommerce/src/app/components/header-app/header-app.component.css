@@ -1,0 +1,13 @@
+a{
+  text-decoration: none;
+}
+
+.fa{
+  cursor: pointer;
+}
+
+.search:focus{
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
