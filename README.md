@@ -1,4 +1,8 @@
 
+2 Shop est une application WEB d'e-commerce pour des ventes des livres en ligne developper coté front-End avec le Framework Angular et pour le back-end avec le Framework SpringBoot
+en utilisant des REST APIs.
+Réaliser par : Boulabiar Majdi & Mhadhbi Nadhir.
+
 ## Screenshots
 
 Home Page               |  Hot Item               
