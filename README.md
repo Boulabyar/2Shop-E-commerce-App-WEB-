@@ -1,5 +1,5 @@
 
-# 2 Shop
+# 2Shop
 Est une application WEB d'e-commerce pour des ventes des livres en ligne développée coté front-End avec le Framework `Angular` et pour le back-end avec le Framework `SpringBoot`
 en utilisant des REST APIs, avec une base de donnés `SQL`.
 Réaliser par : Boulabiar Majdi & Mhadhbi Nadhir.
